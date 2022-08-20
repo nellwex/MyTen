@@ -68,7 +68,7 @@ struct ChatRoom: View {
                     .resizable()
                     .scaledToFill()
                     .clipShape(Circle())
-                    .frame(width: ScreenWidth*0.11, height: ScreenWidth*0.11, alignment: .center)
+                    .frame(width: ScreenWidth*0.1, height: ScreenWidth*0.1, alignment: .center)
                 Text(chat.person.name)
                     .foregroundColor(Color.black)
                     .font(.system(size: ScreenWidth*0.06))
@@ -81,9 +81,11 @@ struct ChatRoom: View {
         HStack {
             Button(action:{}){
                 Image(systemName: "video")
+                    .foregroundColor(Color("MainPink"))
             }
             Button(action:{}){
                 Image(systemName: "phone")
+                    .foregroundColor(Color("MainPink"))
             }
         }
     }
@@ -96,7 +98,7 @@ struct ChatRoom: View {
             HStack{
                 Button(action:{}){
                     Image(systemName: "plus")
-                        .foregroundColor(Color.gray)
+                        .foregroundColor(Color.white)
                         .frame(width: height*0.5, height: height*0.5, alignment: .center)
                         .font(.system(size: height*0.6))
                 }
@@ -104,7 +106,7 @@ struct ChatRoom: View {
                 
                 Button(action:{}){
                     Image(systemName: "photo")
-                        .foregroundColor(Color.gray)
+                        .foregroundColor(Color.white)
                         .frame(width: height*0.5, height: height*0.5, alignment: .center)
                         .font(.system(size: height*0.6))
                 }
@@ -119,7 +121,7 @@ struct ChatRoom: View {
                 
                 Button(action: sendingMessage ){
                     Image(systemName: "paperplane.fill")
-                        .foregroundColor(!textIuput.isEmpty ? Color.blue : Color.gray)
+                        .foregroundColor(!textIuput.isEmpty ? Color.blue : Color.white)
                         .frame(width: height, height: height, alignment: .center)
                         .font(.system(size: height*0.6))
                     
@@ -127,9 +129,8 @@ struct ChatRoom: View {
                 .disabled(textIuput.isEmpty)
             }
         }
-        .padding(.horizontal, 5)
-        .padding(.vertical)
-        .background(Color("LightGray"))
+        .padding()
+        .background(LinearGradient(gradient: Gradient(colors: [Color("MainPink"), Color("MainOrange")]), startPoint: .top, endPoint: .bottom))
         .ignoresSafeArea(.all)
         //
     }
@@ -164,7 +165,7 @@ struct ChatRoom: View {
                             .foregroundColor( isRecieved ? Color.white : Color.black)
                             .padding(.horizontal)
                             .padding(.vertical)
-                            .background(isRecieved ? Color.blue.opacity(0.75) : Color.white)
+                            .background(isRecieved ? Color("MainOrange") : Color.white)
                             .cornerRadius(25)
                     }
                     .frame(maxWidth: viewWidth * 0.7 , alignment: isRecieved ? .leading : .trailing)

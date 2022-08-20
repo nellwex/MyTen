@@ -13,6 +13,7 @@
 		EF62DA7C28A5EDD900A814F3 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62DA7B28A5EDD900A814F3 /* AccountModel.swift */; };
 		EF62DA7E28A7C86A00A814F3 /* ForkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62DA7D28A7C86A00A814F3 /* ForkView.swift */; };
 		EF62DA8728ACC32100A814F3 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62DA8628ACC32000A814F3 /* SignIn.swift */; };
+		EF62DA8928B0B2BF00A814F3 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62DA8828B0B2BD00A814F3 /* MessageService.swift */; };
 		EFE4FCCE28A341DD00FBCCAE /* MyTenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE4FCCD28A341DD00FBCCAE /* MyTenApp.swift */; };
 		EFE4FCD028A341DD00FBCCAE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE4FCCF28A341DD00FBCCAE /* ContentView.swift */; };
 		EFE4FCD228A341DE00FBCCAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFE4FCD128A341DE00FBCCAE /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 		EF62DA7D28A7C86A00A814F3 /* ForkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkView.swift; sourceTree = "<group>"; };
 		EF62DA8328AC9BBD00A814F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EF62DA8628ACC32000A814F3 /* SignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		EF62DA8828B0B2BD00A814F3 /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		EFE4FCCA28A341DD00FBCCAE /* MyTen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFE4FCCD28A341DD00FBCCAE /* MyTenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTenApp.swift; sourceTree = "<group>"; };
 		EFE4FCCF28A341DD00FBCCAE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				EFE4FCF628A343EA00FBCCAE /* Auth.swift */,
+				EF62DA8828B0B2BD00A814F3 /* MessageService.swift */,
 				EFE4FCFC28A344A500FBCCAE /* DateHelper.swift */,
 				EF62DA7728A5ED4A00A814F3 /* SettingStore.swift */,
 			);
@@ -240,6 +243,7 @@
 				EFE4FCF728A343EA00FBCCAE /* Auth.swift in Sources */,
 				EF62DA7A28A5ED9300A814F3 /* CreateView.swift in Sources */,
 				EFE4FCF528A343D300FBCCAE /* ChatViewModel.swift in Sources */,
+				EF62DA8928B0B2BF00A814F3 /* MessageService.swift in Sources */,
 				EFE4FCF128A3437000FBCCAE /* ChatModel.swift in Sources */,
 				EF62DA8728ACC32100A814F3 /* SignIn.swift in Sources */,
 				EF62DA7C28A5EDD900A814F3 /* AccountModel.swift in Sources */,

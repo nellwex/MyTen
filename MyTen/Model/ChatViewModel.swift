@@ -7,16 +7,23 @@
 
 import Foundation
 
+
 class ChatViewModel : ObservableObject{
     
+    
+   
     @Published var chats = Chat.SampleChat
     
     func getSortedFilteredChat (query: String) -> [Chat] {
         
         let SortedChats = chats.sorted {
+         
             guard let date1 = $0.message.last?.date else {return false}
             guard let date2 = $1.message.last?.date else {return false}
-            return date1 > date2
+        
+            return  date1 > date2
+           
+            
         }
         
         if query == ""{

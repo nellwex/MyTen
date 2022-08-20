@@ -11,9 +11,12 @@ import Combine
 struct ForkView: View {
     
     @EnvironmentObject var viewmode: ViewMode
+  
    
     
     var body: some View {
+        
+        
         switch(viewmode.currentView){
         case.signin:
             Signin().environmentObject(viewmode)

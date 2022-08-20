@@ -19,88 +19,95 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView{
-            ZStack {
+            VStack {
+                //聊天導覽
                 VStack {
-                    ScrollView(.horizontal, showsIndicators: false){
-                        HStack {
-                            ForEach(ChatView.getSortedFilteredChat(query: search)){ chat in
-                                    ZStack {
-                                       
+                    
+                    TextField("", text: $search)
+                        .frame(width: .infinity, height: 10, alignment: .center)
+                    
+                    
+                    
+                    ScrollViewReader { scrollview in
+                        ScrollView(.horizontal, showsIndicators: false){
+                            HStack {
+                                ForEach(ChatView.getSortedFilteredChat(query: search)){ chat in
+                                    
+                                    HStack {
                                         
                                         NavigationLink(destination: {
                                             ChatRoom(chat: chat)
                                                 .environmentObject(ChatView)
-                                           
+                                            
                                         })
                                         {
                                             ChatRow(chat: chat)
                                                 .padding(15)
-    //                                            .onLongPressGesture(minimumDuration: 1.5){
-    //                                                ChatView.MarkedAsUnread(!chat.Unread, chat: chat)
-    //
-    //                                            }
+                                               
+                                            
+                                            //                                            .onLongPressGesture(minimumDuration: 1.5){
+                                            //                                                ChatView.MarkedAsUnread(!chat.Unread, chat: chat)
+                                            //
+                                            //                                            }
                                         }
                                         .buttonStyle(PlainButtonStyle())
                                         
                                     }
                                     
-    //                                .swipeActions(edge: .leading, allowsFullSwipe: true){
-    //                                    Button(action: {ChatView.MarkedAsUnread(!chat.Unread, chat: chat)}){
-    //
+                                    //                                .swipeActions(edge: .leading, allowsFullSwipe: true){
+                                    //                                    Button(action: {ChatView.MarkedAsUnread(!chat.Unread, chat: chat)}){
+                                    //
                                     
+                                }
                             }
                         }
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height*0.67, alignment: .center)
                     }
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height*0.67, alignment: .center)
+                    
                     
                     Spacer()
-                }
-               
-                
-                VStack {
-                    Spacer()
-                    ZStack {
-                        Rectangle()
-                            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height*0.15, alignment: .center)
-                            .foregroundColor(Color.white)
-                           
+                    
+                    //menu
+                    HStack {
+                        VStack {
+                            Button{}label: {
+                                Image(systemName: "person.crop.circle")
+                                    .font(.system(size: UIScreen.main.bounds.height*0.05))
+                                    .foregroundColor(Color("MainOrange"))
+                            }
+                            Text("我的頁面")
+                                .foregroundColor(Color.gray)
+                        }.padding(10)
+                        VStack {
+                            Button{}label: {
+                                Image(systemName: "plus.circle")
+                                    .font(.system(size: UIScreen.main.bounds.height*0.05))
+                                    .foregroundColor(Color("MainOrange"))
+                            }
+                            Text("新增好友")
+                                .foregroundColor(Color.gray)
+                        }.padding(10)
+                        VStack {
+                            Button{}label: {
+                                Image(systemName: "gear")
+                                    .font(.system(size: UIScreen.main.bounds.height*0.05))
+                                    .foregroundColor(Color("MainOrange"))
+                            }
+                            Text("偏好設定")
+                                .foregroundColor(Color.gray)
+                        }.padding(10)
                         
-                        HStack {
-                            VStack {
-                                Button{}label: {
-                                    Image(systemName: "person.crop.circle.fill")
-                                        .font(.system(size: UIScreen.main.bounds.height*0.08))
-                                        .foregroundColor(Color("MainPink"))
-                                }
-                                Text("密友群")
-                                    .foregroundColor(Color.secondary)
-                            }.padding(5)
-                            VStack {
-                                Button{}label: {
-                                    Image(systemName: "plus.bubble.fill")
-                                        .font(.system(size: UIScreen.main.bounds.height*0.08))
-                                        .foregroundColor(Color("MainPink"))
-                                }
-                                Text("密友聊聊")
-                                    .foregroundColor(Color.blue)
-                            }.padding(5)
-                            VStack {
-                                Button{}label: {
-                                    Image(systemName: "gearshape.fill")
-                                        .font(.system(size: UIScreen.main.bounds.height*0.08))
-                                        .foregroundColor(Color("MainPink"))
-                                }
-                                Text("設定")
-                                    .foregroundColor(Color.gray)
-                            }.padding(5)
-                        }
                     }
                 }
-                .ignoresSafeArea(.all)
+                
+              
+               
+                
             }
-            
+            .background(Color.white)
+            .searchable(text: $search)
         }
-        .searchable(text: $search)
+      
     }
 }
 

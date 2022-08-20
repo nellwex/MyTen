@@ -18,13 +18,14 @@ enum CurrentView:Int {
 
 class ViewMode : ObservableObject{
     
-
+  
     @Published var currentView = CurrentView.signin
     
     func swithToHome(){
         currentView = CurrentView.home
     }
 
+   
 }
 
 
