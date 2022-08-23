@@ -24,8 +24,8 @@ struct Person : Identifiable{
     }
     
     let id: UUID
-    let name: String
-    let image: String
+    var name: String
+    var image: String
     var nickname: String
     var status: CurrentStatus
 }

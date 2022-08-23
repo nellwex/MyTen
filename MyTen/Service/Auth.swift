@@ -14,32 +14,29 @@ import SwiftUI
 
 class GoogleAuth: ObservableObject{
     
-
-    
-    enum SignInState{
-        case SignIn
-        case SignOut
-    }
+    @StateObject var setting = SettingStore()
+    @StateObject var viewmode = ViewMode()
+ 
     
     func SignIn() {
-          // 1 Create a Google Sign-In configuration object with the clientID
+          //  Create a Google Sign-In configuration object with the clientID
           if GIDSignIn.sharedInstance.hasPreviousSignIn() {
             GIDSignIn.sharedInstance.restorePreviousSignIn { [unowned self] user, error in
                 authenticateUser(for: user, with: error)
                 
             }
           } else {
-            // 2 It fetches the clientID from the GoogleService-Info.plist added to the project earlier.
+            //  It fetches the clientID from the GoogleService-Info.plist added to the project earlier.
             guard let clientID = FirebaseApp.app()?.options.clientID else { return }
             
-            // 3 Create a Google Sign-In configuration object with the clientID
+            //  Create a Google Sign-In configuration object with the clientID
             let configuration = GIDConfiguration(clientID: clientID)
             
-            // 4 access presentingViewController through the shared instance of the UIApplication
+            //  access presentingViewController through the shared instance of the UIApplication
             guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
             guard let rootViewController = windowScene.windows.first?.rootViewController else { return }
             
-            // 5
+            
             GIDSignIn.sharedInstance.signIn(with: configuration, presenting: rootViewController) { [unowned self] user, error in
               authenticateUser(for: user, with: error)
                
@@ -51,7 +48,7 @@ class GoogleAuth: ObservableObject{
         GIDSignIn.sharedInstance.signOut()
         do {
             try Auth.auth().signOut()
-            state = .SignOut
+            setting.userLogOut()
             
         } catch {
             print(error.localizedDescription)
@@ -70,24 +67,23 @@ class GoogleAuth: ObservableObject{
         Auth.auth().signIn(with: credential){ [unowned self] (_, error) in if let error = error{
             print(error.localizedDescription)
         }else{
-            self.state = .SignIn
-           
+            
+            setting.userLogin()
+            UserDefaults.standard.setValue(idToken, forKey: "userID")
         }
             
         }
     }
     
-    @Published var state: SignInState = .SignOut
+   
 }
 
 
 class EmailAuth : ObservableObject{
     
+    @StateObject var setting = SettingStore()
     
-    enum SignInState{
-        case SignIn
-        case SignOut
-    }
+  
     
     @Published var userEmail = ""
     @Published var userPassword = ""
@@ -100,17 +96,19 @@ class EmailAuth : ObservableObject{
             guard error == nil else{
                 return
             }
-            
-            
+
         }
         
     }
     
- func checkUser() async{
-        
+    func SignIn(){
+        setting.userLogin()
+    }
     
+    func SignOut(){
         
     }
-    @Published var state: SignInState = .SignOut
+
+  
     
 }

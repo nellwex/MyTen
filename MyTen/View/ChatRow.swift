@@ -13,6 +13,7 @@ struct ChatRow: View {
     let ScreenWidth = UIScreen.main.bounds.width
     @EnvironmentObject var viewmodel : ChatViewModel
     @StateObject var ChatView = ChatViewModel()
+    @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
         ZStack {
@@ -20,7 +21,7 @@ struct ChatRow: View {
                 ZStack {
                     Rectangle()
                         .frame(width: ScreenWidth*0.65, height: ScreenWidth*0.35, alignment: .leading)
-                        .foregroundColor(.white)
+                        .foregroundColor(colorScheme == .dark ? .black : .white)
                         .cornerRadius(25)
                         .shadow(color: Color("MainOrange"), radius: 10, x: 0, y: 0)
                     
@@ -28,6 +29,7 @@ struct ChatRow: View {
                         HStack {
                             Text(chat.person.name)
                                 .font(.system(size: ScreenWidth*0.053))
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
                                 .bold()
                                 .padding(.leading, 10)
                             
@@ -76,11 +78,9 @@ struct ChatRow: View {
                         .scaledToFill()
                         .clipShape(Circle())
                         .frame(width: ScreenWidth*0.4, height: ScreenWidth*0.4, alignment: .center)
-                        .foregroundColor(Color.green)
                         .padding(5)
                         .contextMenu{
-                            Button{}label: {}
-                            Button{}label: {}
+                            Button{}label: { Text("刪除好友") }
                     }
                     
                     VStack{

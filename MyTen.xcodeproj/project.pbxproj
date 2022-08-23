@@ -10,10 +10,11 @@
 		EF62DA7628A5ECF600A814F3 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62DA7528A5ECF600A814F3 /* SettingView.swift */; };
 		EF62DA7828A5ED4A00A814F3 /* SettingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62DA7728A5ED4A00A814F3 /* SettingStore.swift */; };
 		EF62DA7A28A5ED9300A814F3 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62DA7928A5ED9300A814F3 /* CreateView.swift */; };
-		EF62DA7C28A5EDD900A814F3 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62DA7B28A5EDD900A814F3 /* AccountModel.swift */; };
 		EF62DA7E28A7C86A00A814F3 /* ForkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62DA7D28A7C86A00A814F3 /* ForkView.swift */; };
 		EF62DA8728ACC32100A814F3 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62DA8628ACC32000A814F3 /* SignIn.swift */; };
-		EF62DA8928B0B2BF00A814F3 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62DA8828B0B2BD00A814F3 /* MessageService.swift */; };
+		EF62DA8C28B34BB800A814F3 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EF62DA8B28B34BB800A814F3 /* FirebaseStorage */; };
+		EF62DA8E28B34BB800A814F3 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EF62DA8D28B34BB800A814F3 /* FirebaseStorageCombine-Community */; };
+		EF62DA9228B47F0D00A814F3 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF62DA9128B47F0D00A814F3 /* Launch Screen.storyboard */; };
 		EFE4FCCE28A341DD00FBCCAE /* MyTenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE4FCCD28A341DD00FBCCAE /* MyTenApp.swift */; };
 		EFE4FCD028A341DD00FBCCAE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE4FCCF28A341DD00FBCCAE /* ContentView.swift */; };
 		EFE4FCD228A341DE00FBCCAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFE4FCD128A341DE00FBCCAE /* Assets.xcassets */; };
@@ -38,11 +39,10 @@
 		EF62DA7528A5ECF600A814F3 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		EF62DA7728A5ED4A00A814F3 /* SettingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingStore.swift; sourceTree = "<group>"; };
 		EF62DA7928A5ED9300A814F3 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
-		EF62DA7B28A5EDD900A814F3 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		EF62DA7D28A7C86A00A814F3 /* ForkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkView.swift; sourceTree = "<group>"; };
 		EF62DA8328AC9BBD00A814F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EF62DA8628ACC32000A814F3 /* SignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
-		EF62DA8828B0B2BD00A814F3 /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
+		EF62DA9128B47F0D00A814F3 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		EFE4FCCA28A341DD00FBCCAE /* MyTen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFE4FCCD28A341DD00FBCCAE /* MyTenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTenApp.swift; sourceTree = "<group>"; };
 		EFE4FCCF28A341DD00FBCCAE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,7 +67,9 @@
 				EFE4FCDF28A3425900FBCCAE /* GoogleSignInSwift in Frameworks */,
 				EFE4FCEA28A342E200FBCCAE /* FirebaseFirestoreSwift in Frameworks */,
 				EFE4FCE828A342E200FBCCAE /* FirebaseFirestoreCombine-Community in Frameworks */,
+				EF62DA8C28B34BB800A814F3 /* FirebaseStorage in Frameworks */,
 				EFE4FCE628A342E200FBCCAE /* FirebaseFirestore in Frameworks */,
+				EF62DA8E28B34BB800A814F3 /* FirebaseStorageCombine-Community in Frameworks */,
 				EFE4FCE428A342E200FBCCAE /* FirebaseAuthCombine-Community in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,6 +80,7 @@
 		EFE4FCC128A341DD00FBCCAE = {
 			isa = PBXGroup;
 			children = (
+				EF62DA9128B47F0D00A814F3 /* Launch Screen.storyboard */,
 				EFE4FCCC28A341DD00FBCCAE /* MyTen */,
 				EFE4FCCB28A341DD00FBCCAE /* Products */,
 			);
@@ -119,7 +122,6 @@
 			children = (
 				EFE4FCF428A343D300FBCCAE /* ChatViewModel.swift */,
 				EFE4FCF028A3437000FBCCAE /* ChatModel.swift */,
-				EF62DA7B28A5EDD900A814F3 /* AccountModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -142,7 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				EFE4FCF628A343EA00FBCCAE /* Auth.swift */,
-				EF62DA8828B0B2BD00A814F3 /* MessageService.swift */,
 				EFE4FCFC28A344A500FBCCAE /* DateHelper.swift */,
 				EF62DA7728A5ED4A00A814F3 /* SettingStore.swift */,
 			);
@@ -173,6 +174,8 @@
 				EFE4FCE528A342E200FBCCAE /* FirebaseFirestore */,
 				EFE4FCE728A342E200FBCCAE /* FirebaseFirestoreCombine-Community */,
 				EFE4FCE928A342E200FBCCAE /* FirebaseFirestoreSwift */,
+				EF62DA8B28B34BB800A814F3 /* FirebaseStorage */,
+				EF62DA8D28B34BB800A814F3 /* FirebaseStorageCombine-Community */,
 			);
 			productName = MyTen;
 			productReference = EFE4FCCA28A341DD00FBCCAE /* MyTen.app */;
@@ -205,6 +208,7 @@
 			packageReferences = (
 				EFE4FCDB28A3425800FBCCAE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				EFE4FCE028A342E100FBCCAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				EF62DA8A28B34BB800A814F3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = EFE4FCCB28A341DD00FBCCAE /* Products */;
 			projectDirPath = "";
@@ -222,6 +226,7 @@
 			files = (
 				EFE4FCD528A341DE00FBCCAE /* Preview Assets.xcassets in Resources */,
 				EFE4FCD228A341DE00FBCCAE /* Assets.xcassets in Resources */,
+				EF62DA9228B47F0D00A814F3 /* Launch Screen.storyboard in Resources */,
 				EFE4FCFF28A34A2400FBCCAE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,10 +248,8 @@
 				EFE4FCF728A343EA00FBCCAE /* Auth.swift in Sources */,
 				EF62DA7A28A5ED9300A814F3 /* CreateView.swift in Sources */,
 				EFE4FCF528A343D300FBCCAE /* ChatViewModel.swift in Sources */,
-				EF62DA8928B0B2BF00A814F3 /* MessageService.swift in Sources */,
 				EFE4FCF128A3437000FBCCAE /* ChatModel.swift in Sources */,
 				EF62DA8728ACC32100A814F3 /* SignIn.swift in Sources */,
-				EF62DA7C28A5EDD900A814F3 /* AccountModel.swift in Sources */,
 				EF62DA7628A5ECF600A814F3 /* SettingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,6 +386,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -413,6 +418,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -452,6 +459,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		EF62DA8A28B34BB800A814F3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		EFE4FCDB28A3425800FBCCAE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
@@ -471,6 +486,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EF62DA8B28B34BB800A814F3 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF62DA8A28B34BB800A814F3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		EF62DA8D28B34BB800A814F3 /* FirebaseStorageCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF62DA8A28B34BB800A814F3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseStorageCombine-Community";
+		};
 		EFE4FCDC28A3425900FBCCAE /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EFE4FCDB28A3425800FBCCAE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;

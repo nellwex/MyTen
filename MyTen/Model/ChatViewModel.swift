@@ -5,10 +5,53 @@
 //  Created by 魏頤綸 on 2022/8/10.
 //
 
+import SwiftUI
 import Foundation
-
+import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+import FirebaseStorage
+import FirebaseStorageCombineSwift
 
 class ChatViewModel : ObservableObject{
+    
+    @State var selectedImage : UIImage?
+    @Published var chat : [Chat] = []
+   
+    let db = Firestore.firestore()
+    let storage = Storage.storage().reference()
+    let data = Data()
+    var userId = ""
+    
+    
+    
+    func upLoadImage(){
+        
+        guard selectedImage != nil else { return }
+        
+        let imageData = selectedImage!.jpegData(compressionQuality: 1)
+        
+        guard imageData != nil else { return }
+        
+        
+    }
+    
+    func getUserImage(){
+        
+        var imageRef = storage.child("ProfileImage/\(userId).jpg ")
+        
+       
+    }
+    
+    func getMessages(byId: String){
+        
+        db.collection("Person").addSnapshotListener { querySnapshot, error in }
+        
+    }
+    
+    
+    
+    
     
     
    
@@ -38,26 +81,7 @@ class ChatViewModel : ObservableObject{
         }
     }
    
-    func getSection (for chat: Chat) -> [[Message]] {
-        var res = [[Message]]()
-        var tpm = [Message]()
-        for message in chat.message{
-            if let firstMessage = tpm.first{
-                let daysBetween = firstMessage.date.dayBetween(date: message.date)
-                if daysBetween >= 1 {
-                    res.append(tpm)
-                    tpm.removeAll()
-                    tpm.append(message)
-                }else{
-                    tpm.append(message)
-                }
-            }else{
-                tpm.append(message)
-            }
-        }
-        res.append(tpm)
-        return res
-    }
+
     
     func sendingMessage ( input: String, in chat: Chat) -> Message? {
         if let index = chats.firstIndex(where: {$0.id == chat.id}){

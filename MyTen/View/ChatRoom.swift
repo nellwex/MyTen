@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ChatRoom: View {
     
+    @Environment(\.colorScheme) private var colorScheme
     @State private var textIuput = ""
     @FocusState private var isFocused
     @State private var messageIDtoScroll : UUID?
@@ -20,10 +21,10 @@ struct ChatRoom: View {
     
     var body: some View {
         VStack(spacing:0) {
-            GeometryReader{ reader in
+            GeometryReader{ georeader in
                 ScrollView(){
                     ScrollViewReader { scrollReader in
-                        getMessageView(viewWidth: reader.size.width)
+                        getMessageView(viewWidth: georeader.size.width)
                             .padding(.horizontal)
                             .onChange(of: messageIDtoScroll){_ in
                                 if let messageID = messageIDtoScroll{
@@ -39,7 +40,7 @@ struct ChatRoom: View {
                 }
                 
             }
-            .background(Color(hue: 0.541, saturation: 0.042, brightness: 0.94))
+            .background(colorScheme == .dark ? Color.black : Color("LightGray"))
             .padding(0)
             .toolbar{
                 ToolbarItem(placement: .navigationBarLeading){
@@ -52,6 +53,9 @@ struct ChatRoom: View {
             }
             .onAppear(){
                 ViewModel.MarkedAsUnread(false, chat: chat)
+            }
+            .onTapGesture {
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
             }
             
             ToolBarView()
@@ -70,7 +74,7 @@ struct ChatRoom: View {
                     .clipShape(Circle())
                     .frame(width: ScreenWidth*0.1, height: ScreenWidth*0.1, alignment: .center)
                 Text(chat.person.name)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     .font(.system(size: ScreenWidth*0.06))
                     .bold()
             }
@@ -115,7 +119,7 @@ struct ChatRoom: View {
                 TextField("輸入訊息...", text: $textIuput)
                     .padding(.horizontal, 10)
                     .frame(height: height, alignment: .leading)
-                    .background(Color.white)
+                    .background(colorScheme == .dark ? Color.black : Color.white)
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                     .focused($isFocused)
                 
