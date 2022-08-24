@@ -13,8 +13,8 @@ struct ContentView: View {
     
     @StateObject var ChatView = ChatViewModel()
     @Environment(\.colorScheme) private var colorScheme
-    
-    @State var showSetting : Bool = false
+    @EnvironmentObject var viewmode : ViewMode
+    @State var showSetting = false
     @State private var search = ""
     
     var body: some View {
@@ -24,7 +24,7 @@ struct ContentView: View {
                 VStack {
                     
                     TextField("", text: $search)
-                        .frame(width: .infinity, height: 10, alignment: .center)
+                        .frame(width: UIScreen.main.bounds.width*0.8, height: 10, alignment: .center)
                     
                     
                     
@@ -94,15 +94,15 @@ struct ContentView: View {
                     }
                     .padding(10)
                     .onTapGesture {
-                        showSetting.toggle()
+                        viewmode.GoSetting()
                     }
-                    .sheet(isPresented: $showSetting) {
-                        SettingView()
-                            .onDisappear(){
-                                showSetting = false
-                            }
-                    }
+                   
+                    
                 }
+                .offset(y:-10)
+                .padding(20)
+                
+                Spacer()
             }
             
             
@@ -110,6 +110,8 @@ struct ContentView: View {
             
         }
         .searchable(text: $search)
+        .ignoresSafeArea(.all)
+   
     }
     
 }

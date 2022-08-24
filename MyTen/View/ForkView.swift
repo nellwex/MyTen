@@ -11,8 +11,6 @@ import Combine
 struct ForkView: View {
     
     @EnvironmentObject var viewmode: ViewMode
-  
-   
     
     var body: some View {
         
@@ -20,12 +18,16 @@ struct ForkView: View {
         switch(viewmode.currentView){
         case.signin:
             Signin().environmentObject(viewmode)
+              
             
         case.create:
             CreateView().environmentObject(viewmode)
             
         case.home:
             ContentView().environmentObject(viewmode)
+            
+        case.setting:
+            SettingView().environmentObject(viewmode)
         }
     }
 }

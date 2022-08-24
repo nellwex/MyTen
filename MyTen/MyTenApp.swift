@@ -6,51 +6,22 @@
 //
 
 import SwiftUI
-import FirebaseCore
-import GoogleSignIn
+import Firebase
 
-enum CurrentView:Int {
-    
-    case signin
-    case create
-    case home
-    
-}
-
-class ViewMode : ObservableObject{
-    
-    
-    @Published var currentView = CurrentView.signin
-    
-    
-    func LogIn(){
-        currentView = CurrentView.home
-    }
-    
-    func LogOut(){
-        currentView = CurrentView.signin
-    }
-    
-    
-    func SignUp(){
-        currentView = CurrentView.create
-    }
-    
-}
 
 
 
 @main
 struct MyTenApp: App {
     
-    private var viewmode = ViewMode()
-    @StateObject var googleAuth = GoogleAuth()
-    @StateObject var emailAuth = EmailAuth()
+    @StateObject var viewmode = ViewMode()
+    
     
     let isLogIn = UserDefaults.standard.bool(forKey: "isLogIn")
     
     init(){
         FirebaseApp.configure()
+        
     }
     
     
@@ -59,13 +30,15 @@ struct MyTenApp: App {
         
         
         WindowGroup {
+            
             ForkView().environmentObject(viewmode)
                 .onAppear(){
                     if (isLogIn){
-                        viewmode.LogIn()
+                        viewmode.currentView = .home
                     }
                 }
         }
+        
         
     }
 }

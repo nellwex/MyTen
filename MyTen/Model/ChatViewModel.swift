@@ -8,7 +8,6 @@
 import SwiftUI
 import Foundation
 import Firebase
-import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseStorage
 import FirebaseStorageCombineSwift
@@ -38,9 +37,6 @@ class ChatViewModel : ObservableObject{
     
     func getUserImage(){
         
-        var imageRef = storage.child("ProfileImage/\(userId).jpg ")
-        
-       
     }
     
     func getMessages(byId: String){

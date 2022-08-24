@@ -29,7 +29,7 @@
 		EFE4FCEF28A3435500FBCCAE /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE4FCEE28A3435500FBCCAE /* ChatRoom.swift */; };
 		EFE4FCF128A3437000FBCCAE /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE4FCF028A3437000FBCCAE /* ChatModel.swift */; };
 		EFE4FCF528A343D300FBCCAE /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE4FCF428A343D300FBCCAE /* ChatViewModel.swift */; };
-		EFE4FCF728A343EA00FBCCAE /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE4FCF628A343EA00FBCCAE /* Auth.swift */; };
+		EFE4FCF728A343EA00FBCCAE /* ViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE4FCF628A343EA00FBCCAE /* ViewMode.swift */; };
 		EFE4FCFB28A3448A00FBCCAE /* ChatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE4FCFA28A3448A00FBCCAE /* ChatRow.swift */; };
 		EFE4FCFD28A344A500FBCCAE /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE4FCFC28A344A500FBCCAE /* DateHelper.swift */; };
 		EFE4FCFF28A34A2400FBCCAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EFE4FCFE28A34A2400FBCCAE /* GoogleService-Info.plist */; };
@@ -51,7 +51,7 @@
 		EFE4FCEE28A3435500FBCCAE /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		EFE4FCF028A3437000FBCCAE /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		EFE4FCF428A343D300FBCCAE /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
-		EFE4FCF628A343EA00FBCCAE /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		EFE4FCF628A343EA00FBCCAE /* ViewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMode.swift; sourceTree = "<group>"; };
 		EFE4FCFA28A3448A00FBCCAE /* ChatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRow.swift; sourceTree = "<group>"; };
 		EFE4FCFC28A344A500FBCCAE /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		EFE4FCFE28A34A2400FBCCAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -99,6 +99,7 @@
 			children = (
 				EF62DA8328AC9BBD00A814F3 /* Info.plist */,
 				EFE4FCCD28A341DD00FBCCAE /* MyTenApp.swift */,
+				EFE4FCF628A343EA00FBCCAE /* ViewMode.swift */,
 				EFE4FCEC28A3431200FBCCAE /* View */,
 				EFE4FCED28A3432200FBCCAE /* Service */,
 				EFE4FCEB28A3430400FBCCAE /* Model */,
@@ -143,7 +144,6 @@
 		EFE4FCED28A3432200FBCCAE /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				EFE4FCF628A343EA00FBCCAE /* Auth.swift */,
 				EFE4FCFC28A344A500FBCCAE /* DateHelper.swift */,
 				EF62DA7728A5ED4A00A814F3 /* SettingStore.swift */,
 			);
@@ -245,7 +245,7 @@
 				EF62DA7828A5ED4A00A814F3 /* SettingStore.swift in Sources */,
 				EFE4FCFB28A3448A00FBCCAE /* ChatRow.swift in Sources */,
 				EFE4FCFD28A344A500FBCCAE /* DateHelper.swift in Sources */,
-				EFE4FCF728A343EA00FBCCAE /* Auth.swift in Sources */,
+				EFE4FCF728A343EA00FBCCAE /* ViewMode.swift in Sources */,
 				EF62DA7A28A5ED9300A814F3 /* CreateView.swift in Sources */,
 				EFE4FCF528A343D300FBCCAE /* ChatViewModel.swift in Sources */,
 				EFE4FCF128A3437000FBCCAE /* ChatModel.swift in Sources */,

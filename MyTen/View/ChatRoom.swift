@@ -119,7 +119,7 @@ struct ChatRoom: View {
                 TextField("輸入訊息...", text: $textIuput)
                     .padding(.horizontal, 10)
                     .frame(height: height, alignment: .leading)
-                    .background(colorScheme == .dark ? Color.black : Color.white)
+                    .background(colorScheme == .dark ? Color("DarkGray") : Color.white)
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                     .focused($isFocused)
                 

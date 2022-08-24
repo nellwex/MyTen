@@ -11,27 +11,29 @@ import SwiftUI
 
 class SettingStore : ObservableObject{
     
-    @EnvironmentObject var viewmode : ViewMode
     
-    
-  
-    
-    func setUserId (input: String){
+    func setNickname (nickname: String){
         
-        UserDefaults.setValue(input, forKey: "UserID")
+        UserDefaults.standard.set(nickname, forKey: "userNickname")
+        
+    }
+    
+    func setUserId (id: String){
+        
+        UserDefaults.standard.set(id, forKey: "userId")
         
     }
     
     func userLogin(){
 
         UserDefaults.standard.set(true, forKey: "isLogIn")
-        viewmode.LogIn()
+       
     }
     
     func userLogOut(){
         
         UserDefaults.standard.set(false, forKey: "isLogIn")
-        viewmode.LogOut()
+        
         
     }
     
