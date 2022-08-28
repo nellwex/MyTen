@@ -55,7 +55,13 @@ struct ChatRow: View {
                     }
                 }
                 .contextMenu{
-                    Button{ChatView.MarkedAsUnread(!chat.Unread, chat: chat)}label: {}
+                    Button(action: {ChatView.MarkedAsUnread(!chat.Unread, chat: chat)}){
+                        HStack{
+                            Text("標示為已讀")
+                            Image(systemName: "envelope.open")
+                                .foregroundColor(Color("MainPink"))
+                        }
+                    }
                 }
 
                 .padding()
@@ -80,7 +86,14 @@ struct ChatRow: View {
                         .frame(width: ScreenWidth*0.4, height: ScreenWidth*0.4, alignment: .center)
                         .padding(5)
                         .contextMenu{
-                            Button{}label: { Text("刪除好友") }
+                            Button{}label: {
+                                HStack {
+                                    Text("刪除好友")
+                                    Image(systemName: "trash")
+                                        .foregroundColor(.red.opacity(0.9))
+                                }
+                                
+                            }
                     }
                     
                     VStack{

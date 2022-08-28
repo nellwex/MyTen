@@ -7,9 +7,14 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestoreSwift
+import FirebaseStorage
+import FirebaseStorageCombineSwift
 import FirebaseAuth
 import GoogleSignIn
+import AuthenticationServices
 import SwiftUI
+
 
 enum CurrentView:Int {
     
@@ -20,14 +25,20 @@ enum CurrentView:Int {
     
 }
 
+
+
 class ViewMode: ObservableObject{
     
-    
+    let db = Firestore.firestore()
+    let ref = Storage.storage().reference()
     
     @Published var currentView = CurrentView.signin
-    
-    
-    let isLogIn = UserDefaults.standard.bool(forKey: "isLogIn")
+   
+    func GetUserImage(id: String){
+        
+        let image = ref.child("Accounts/\(id)/profile.jpg")
+        
+    }
     
     func GoSetting(){
         currentView = .setting
@@ -38,29 +49,46 @@ class ViewMode: ObservableObject{
     }
     
     func SignUp(userEmail: String, userPassword: String){
-        Auth.auth().createUser(withEmail: userEmail, password: userPassword) { authResult, error in
-            guard error == nil else {
+        Auth.auth().createUser(withEmail: userEmail, password: userPassword) { result, error in
+            guard result != nil, error == nil else {
+                self.userIsNotValid()
                 return
             }
-           
+            self.setUserId(id: userEmail)
+            
+            self.currentView = .create
         }
-        currentView = .create
+        
     }
     
     
-    func SignIn(userEmail: String, userPassword: String){
-        Auth.auth().signIn(withEmail: userEmail, password: userPassword) { authResult, error in
-            guard error == nil else {
+    func SignIn(userEmail: String, userPassword: String) {
+        Auth.auth().signIn(withEmail: userEmail, password: userPassword) { result, error in
+            guard result != nil, error == nil else {
+                self.userIsNotValid()
                 return
             }
             
+            self.setUserId(id: userEmail)
+            self.currentView = .home
+            self.userLogin()
+            
         }
         
-        currentView = .home
-        userLogin()
+        
+      
     }
     
     func SignOut(){
+        do {
+            try Auth.auth().signOut()
+            currentView = .signin
+            userLogOut()
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+        
         currentView = .signin
     }
     
@@ -70,6 +98,8 @@ class ViewMode: ObservableObject{
         if GIDSignIn.sharedInstance.hasPreviousSignIn() {
             GIDSignIn.sharedInstance.restorePreviousSignIn { [unowned self] user, error in
                 authenticateUser(for: user, with: error)
+                
+                self.currentView = .home
                 
             }
         } else {
@@ -111,7 +141,7 @@ class ViewMode: ObservableObject{
             return
         }
         guard let authentication = user?.authentication, let idToken = authentication.idToken else { return }
-        
+        guard let emailAddress = user?.profile?.email else {return}
         let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
         
         Auth.auth().signIn(with: credential){
@@ -120,15 +150,26 @@ class ViewMode: ObservableObject{
             }else{
                 currentView = .home
                 userLogin()
-                setUserId(id: idToken)
+                setUserId(id: emailAddress)
             }
             
         }
     }
     
-    func setNickname (nickname: String){
+    
+    func AppleSignIn(){
+       
+//        let provider = ASAuthorizationAppleIDProvider()
+//        let request = provider.createRequest()
+//        let controller = ASAuthorizationController(authorizationRequests: [request])
         
-        UserDefaults.standard.set(nickname, forKey: "userNickname")
+    }
+    
+    
+    
+    func setUsername (username: String){
+        
+        UserDefaults.standard.set(username, forKey: "username")
         
     }
     
@@ -137,6 +178,7 @@ class ViewMode: ObservableObject{
         UserDefaults.standard.set(id, forKey: "userId")
         
     }
+    
     
     func userLogin(){
         
@@ -151,6 +193,13 @@ class ViewMode: ObservableObject{
         
     }
     
+    func userIsNotValid(){
+        
+        UserDefaults.standard.set(true, forKey: "isNotValid")
+        
+    }
+    
+   
     
 }
 

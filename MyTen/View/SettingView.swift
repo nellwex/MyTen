@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import FirebaseStorage
+import FirebaseStorageCombineSwift
 
 struct SettingView: View {
     
@@ -13,6 +15,8 @@ struct SettingView: View {
     @EnvironmentObject var viewmode : ViewMode
     @StateObject var ChatView = ChatViewModel()
     @Environment(\.colorScheme) private var colorScheme
+    
+    var userImage = ""
     
     var body: some View {
         

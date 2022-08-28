@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF1F64D228B9BF8700A2C245 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F64D128B9BF8700A2C245 /* AccountModel.swift */; };
+		EF1F64D428BBB04100A2C245 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F64D328BBB04100A2C245 /* ImagePicker.swift */; };
 		EF62DA7628A5ECF600A814F3 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62DA7528A5ECF600A814F3 /* SettingView.swift */; };
-		EF62DA7828A5ED4A00A814F3 /* SettingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62DA7728A5ED4A00A814F3 /* SettingStore.swift */; };
 		EF62DA7A28A5ED9300A814F3 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62DA7928A5ED9300A814F3 /* CreateView.swift */; };
 		EF62DA7E28A7C86A00A814F3 /* ForkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62DA7D28A7C86A00A814F3 /* ForkView.swift */; };
 		EF62DA8728ACC32100A814F3 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62DA8628ACC32000A814F3 /* SignIn.swift */; };
@@ -36,8 +37,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EF1F64D128B9BF8700A2C245 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		EF1F64D328BBB04100A2C245 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		EF62DA7528A5ECF600A814F3 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		EF62DA7728A5ED4A00A814F3 /* SettingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingStore.swift; sourceTree = "<group>"; };
 		EF62DA7928A5ED9300A814F3 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		EF62DA7D28A7C86A00A814F3 /* ForkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForkView.swift; sourceTree = "<group>"; };
 		EF62DA8328AC9BBD00A814F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				EFE4FCF428A343D300FBCCAE /* ChatViewModel.swift */,
 				EFE4FCF028A3437000FBCCAE /* ChatModel.swift */,
+				EF1F64D128B9BF8700A2C245 /* AccountModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -145,7 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				EFE4FCFC28A344A500FBCCAE /* DateHelper.swift */,
-				EF62DA7728A5ED4A00A814F3 /* SettingStore.swift */,
+				EF1F64D328BBB04100A2C245 /* ImagePicker.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -241,9 +244,10 @@
 				EFE4FCEF28A3435500FBCCAE /* ChatRoom.swift in Sources */,
 				EFE4FCD028A341DD00FBCCAE /* ContentView.swift in Sources */,
 				EF62DA7E28A7C86A00A814F3 /* ForkView.swift in Sources */,
+				EF1F64D428BBB04100A2C245 /* ImagePicker.swift in Sources */,
 				EFE4FCCE28A341DD00FBCCAE /* MyTenApp.swift in Sources */,
-				EF62DA7828A5ED4A00A814F3 /* SettingStore.swift in Sources */,
 				EFE4FCFB28A3448A00FBCCAE /* ChatRow.swift in Sources */,
+				EF1F64D228B9BF8700A2C245 /* AccountModel.swift in Sources */,
 				EFE4FCFD28A344A500FBCCAE /* DateHelper.swift in Sources */,
 				EFE4FCF728A343EA00FBCCAE /* ViewMode.swift in Sources */,
 				EF62DA7A28A5ED9300A814F3 /* CreateView.swift in Sources */,
