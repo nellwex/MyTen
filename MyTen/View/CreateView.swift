@@ -13,11 +13,11 @@ import FirebaseStorage
 
 struct CreateView: View {
     
-   
+    @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject var viewmode : ViewMode
     
     let ScreenWidth = UIScreen.main.bounds.width
-  
+    let defaults = UserDefaults.standard
     let db = Firestore.firestore()
     let ref = Storage.storage().reference()
     
@@ -48,6 +48,7 @@ struct CreateView: View {
         }
         limitText(text: username, limit: 12)
         viewmode.setUsername(username: username)
+        viewmode.currentView = .home
         
         
     }
@@ -57,12 +58,25 @@ struct CreateView: View {
         VStack {
             
             
-            Text("帳號設定")
-                .font(.system(.largeTitle, design: .rounded))
-                .foregroundColor(Color("MainPink"))
-                .bold()
-                .frame(width: ScreenWidth, height: ScreenWidth*0.1, alignment: .center)
+            ZStack {
+                HStack{
+                    Image(systemName:"arrow.left")
+                        .font(.system(size: ScreenWidth*0.07))
+                        .foregroundColor(Color.blue)
+                        .padding(ScreenWidth*0.08)
+                        .onTapGesture {
+                            viewmode.currentView = .signin
+                        }
+                    Spacer()
+                }
+                
+                Text("帳號設定")
+                    .font(.system(.largeTitle, design: .rounded))
+                    .foregroundColor(Color("MainPink"))
+                    .bold()
+                    .frame(width: ScreenWidth, height: ScreenWidth*0.1, alignment: .center)
                 .padding()
+            }
             
             Text("您仍可在之後更改這些設定")
                 .font(.system(.subheadline))
@@ -132,7 +146,11 @@ struct CreateView: View {
             }
             .padding()
             
-            Button(action:{}) {
+            Button(action:{
+                
+                settingProfile()
+                
+            }) {
                 Text("確定")
                     .font(.system(size: ScreenWidth*0.05))
                     .foregroundColor(Color.white)
@@ -142,7 +160,7 @@ struct CreateView: View {
             .background(LinearGradient(gradient: Gradient(colors: [Color("MainPink"), Color("MainOrange")]), startPoint: .top, endPoint: .bottom))
             .cornerRadius(30)
             .padding(ScreenWidth*0.1)
-            .alert("名稱錯誤或空白", isPresented: $nameIsEmpty) {
+            .alert("名稱長度不符或空白", isPresented: $nameIsEmpty) {
                 Button("重新輸入") {
                     self.nameIsEmpty = false
                 }
@@ -155,6 +173,7 @@ struct CreateView: View {
         .sheet(isPresented: $isImagePicking) {
             ImagePicker(image: $selectedImage)
         }
+        .background(colorScheme == .dark ? Color(.black).edgesIgnoringSafeArea(.all) : Color(.white).edgesIgnoringSafeArea(.all))
         
         
     }

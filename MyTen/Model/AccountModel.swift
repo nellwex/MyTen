@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Account : Identifiable, Codable{
     var id : String
@@ -13,6 +14,4 @@ struct Account : Identifiable, Codable{
     var customId: String
 }
 
-extension Account {
-    
-}
+

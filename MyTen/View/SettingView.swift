@@ -16,7 +16,14 @@ struct SettingView: View {
     @StateObject var ChatView = ChatViewModel()
     @Environment(\.colorScheme) private var colorScheme
     
-    var userImage = ""
+    @State var isImagePicking = false
+    @State var image : Image
+    @State var selectedImage : UIImage?
+    
+    func loadImage() {
+        guard let selectedImage = selectedImage else { return }
+        image = Image(uiImage: selectedImage)
+    }
     
     var body: some View {
         
@@ -28,7 +35,7 @@ struct SettingView: View {
                     .font(.system(size: ScreenWidth*0.08))
                     .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                 
-                    Image("PlusEmpty")
+                    image
                         .resizable()
                         .scaledToFill()
                         .clipShape(Circle())
@@ -42,8 +49,11 @@ struct SettingView: View {
                             }
                         }
                         .padding()
+                        .onTapGesture {
+                            isImagePicking = true
+                        }
                     
-                    Button(action: { viewmode.userLogOut() }) {
+                    Button(action: { isImagePicking = true }) {
                         ZStack {
                             Rectangle()
                                 .frame(width: ScreenWidth*0.5, height: ScreenWidth*0.1, alignment: .center)
@@ -71,7 +81,10 @@ struct SettingView: View {
                         .padding(10)
                     }
                     
-                    Button(action: { viewmode.userLogOut() }) {
+                    Button(action: {
+                        viewmode.userLogOut()
+                        viewmode.GoogleSignOut()
+                    }) {
                         ZStack {
                             Rectangle()
                                 .frame(width: ScreenWidth*0.5, height: ScreenWidth*0.1, alignment: .center)
@@ -90,23 +103,13 @@ struct SettingView: View {
             
             Spacer()
             
-            VStack {
-                ZStack {
-                    Circle()
-                        .frame(width: ScreenWidth*0.18, height: ScreenWidth*0.18, alignment: .center)
-                    .foregroundColor(Color("MainPink"))
-                    Image(systemName: "arrowshape.turn.up.backward")
-                        .font(.system(size: ScreenWidth*0.08))
-                        .foregroundColor(Color.white)
-                }
-              Text("返回")
-                    .foregroundColor(Color("MainPink"))
-                    .bold()
-            }
-            .padding()
+        
             
         }
-        
+        .onChange(of: selectedImage) { _ in loadImage() }
+        .sheet(isPresented: $isImagePicking) {
+            ImagePicker(image: $selectedImage)
+        }
         
         
         
@@ -117,7 +120,7 @@ struct SettingView: View {
 
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView()
+        SettingView(image: Image("PlusEmpty"))
     }
 }
 

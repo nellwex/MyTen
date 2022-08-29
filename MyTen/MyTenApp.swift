@@ -16,7 +16,7 @@ struct MyTenApp: App {
     
     @StateObject var viewmode = ViewMode()
     
-    
+    let defaults = UserDefaults.standard
     let isLogIn = UserDefaults.standard.bool(forKey: "isLogIn")
     
     init(){
@@ -33,9 +33,9 @@ struct MyTenApp: App {
             
             ForkView().environmentObject(viewmode)
                 .onAppear(){
-                    AppDelegate.orientationLock = UIInterfaceOrientationMask.landscape
+                    AppDelegate.orientationLock = UIInterfaceOrientationMask.portrait
 
-                    UIDevice.current.setValue(UIInterfaceOrientation.landscapeLeft.rawValue, forKey: "orientation")
+                    UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
 
                     UINavigationController.attemptRotationToDeviceOrientation()
                     

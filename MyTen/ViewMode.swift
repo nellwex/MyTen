@@ -19,9 +19,10 @@ import SwiftUI
 enum CurrentView:Int {
     
     case signin
+    case signup
     case create
     case home
-    case setting
+    
     
 }
 
@@ -31,32 +32,42 @@ class ViewMode: ObservableObject{
     
     let db = Firestore.firestore()
     let ref = Storage.storage().reference()
+    let defaults = UserDefaults.standard
     
     @Published var currentView = CurrentView.signin
    
+    func upLoadUserImage(image: UIImage){
+        
+        let imageData = image.jpegData(compressionQuality: 1)
+        guard imageData != nil else { return }
+        let path = "Accounts/\(defaults.value(forKey: "userId") as! String)/profile.jpeg"
+        let file = ref.child(path)
+        let _ = file.putData(imageData!, metadata: nil){ metadata , error in
+            if error == nil && metadata != nil {
+                self.db.collection("Accounts").document("\(self.defaults.value(forKey: "userId") as! String)").setData(["image":path])
+            }
+        }
+    }
+    
     func GetUserImage(id: String){
         
-        let image = ref.child("Accounts/\(id)/profile.jpg")
+        let _ = ref.child("Accounts/\(id)/profile.jpeg")
+        
         
     }
     
-    func GoSetting(){
-        currentView = .setting
-    }
     
-    func LeaveSetting(){
-        currentView = .home
-    }
     
     func SignUp(userEmail: String, userPassword: String){
         Auth.auth().createUser(withEmail: userEmail, password: userPassword) { result, error in
             guard result != nil, error == nil else {
-                self.userIsNotValid()
+                self.signUpIsNotValid()
                 return
             }
             self.setUserId(id: userEmail)
-            
+            self.signUpIsValid()
             self.currentView = .create
+           
         }
         
     }
@@ -68,7 +79,7 @@ class ViewMode: ObservableObject{
                 self.userIsNotValid()
                 return
             }
-            
+            self.userIsValid()
             self.setUserId(id: userEmail)
             self.currentView = .home
             self.userLogin()
@@ -129,6 +140,7 @@ class ViewMode: ObservableObject{
             currentView = .signin
             userLogOut()
             
+            
         } catch {
             print(error.localizedDescription)
         }
@@ -146,8 +158,11 @@ class ViewMode: ObservableObject{
         
         Auth.auth().signIn(with: credential){
             [unowned self] (_, error) in if let error = error{
+                
+                self.userIsNotValid()
                 print(error.localizedDescription)
             }else{
+                userIsValid()
                 currentView = .home
                 userLogin()
                 setUserId(id: emailAddress)
@@ -169,37 +184,50 @@ class ViewMode: ObservableObject{
     
     func setUsername (username: String){
         
-        UserDefaults.standard.set(username, forKey: "username")
+        defaults.set(username, forKey: "username")
         
     }
     
     func setUserId (id: String){
         
-        UserDefaults.standard.set(id, forKey: "userId")
+        defaults.set(id, forKey: "userId")
         
     }
     
     
+    
     func userLogin(){
         
-        UserDefaults.standard.set(true, forKey: "isLogIn")
+        defaults.set(true, forKey: "isLogIn")
         
     }
     
     func userLogOut(){
         
-        UserDefaults.standard.set(false, forKey: "isLogIn")
+        defaults.set(false, forKey: "isLogIn")
         
         
     }
     
     func userIsNotValid(){
         
-        UserDefaults.standard.set(true, forKey: "isNotValid")
+        defaults.set(true, forKey: "isNotValid")
         
     }
     
-   
+    func userIsValid(){
+        
+        defaults.set(false, forKey: "isNotValid")
+        
+    }
     
+    func signUpIsValid(){
+        defaults.set(true, forKey: "signUpIsValid")
+    }
+    
+    func signUpIsNotValid(){
+        defaults.set(false, forKey: "signUpIsValid")
+    }
+  
 }
 

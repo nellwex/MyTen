@@ -17,18 +17,24 @@ struct ForkView: View {
         
         
         switch(viewmode.currentView){
+            
         case.signin:
             Signin().environmentObject(viewmode)
-              
+                
+            
+        case.signup:
+            SignUp().environmentObject(viewmode)
+                
+            
         case.create:
             CreateView(image: Image("PlusEmpty")).environmentObject(viewmode)
+                
             
         case.home:
             ContentView().environmentObject(viewmode)
-             
+                
             
-        case.setting:
-            SettingView().environmentObject(viewmode)
+               
         }
     }
 }

@@ -17,13 +17,16 @@ struct ContentView: View {
     @State var showSetting = false
     @State private var search = ""
     
+    let defaults = UserDefaults.standard
+    
+    
     var body: some View {
         NavigationView{
             VStack {
                 //聊天導覽
                 VStack {
                     
-                    TextField("", text: $search)
+                    TextField("" ,text: $search)
                         .frame(width: UIScreen.main.bounds.width*0.8, height: 10, alignment: .center)
                     
                     
@@ -46,7 +49,7 @@ struct ContentView: View {
                                             
                                         }
                                     }
-                                    .buttonStyle(PlainButtonStyle())
+                                  
                                     
                                 }
                                 
@@ -73,7 +76,9 @@ struct ContentView: View {
                     .padding(10)
                     
                     VStack {
-                        Button{}label: {
+                        Button{
+                            
+                        }label: {
                             Image(systemName: "plus.circle")
                                 .font(.system(size: UIScreen.main.bounds.height*0.05))
                                 .foregroundColor(Color("MainOrange"))
@@ -84,7 +89,9 @@ struct ContentView: View {
                     .padding(10)
                     
                     VStack {
-                        Button{}label: {
+                        Button{
+                            showSetting = true
+                        }label: {
                             Image(systemName: "gear")
                                 .font(.system(size: UIScreen.main.bounds.height*0.05))
                                 .foregroundColor(Color("MainOrange"))
@@ -93,13 +100,11 @@ struct ContentView: View {
                             .foregroundColor(Color.gray)
                     }
                     .padding(10)
-                    .onTapGesture {
-                        viewmode.GoSetting()
-                    }
+                   
                    
                     
                 }
-                .offset(y:-10)
+                .offset(y:-20)
                 .padding(20)
                 
                 Spacer()
@@ -111,6 +116,9 @@ struct ContentView: View {
         }
         .searchable(text: $search)
         .ignoresSafeArea(.all)
+        .sheet(isPresented: $showSetting) {
+            SettingView(image: Image("PlusEmpty"))
+        }
    
     }
     
